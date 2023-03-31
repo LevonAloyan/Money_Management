@@ -1,9 +1,12 @@
 package com.epam.money_management.model.dto;
 
+import javax.validation.constraints.Pattern;
+
 public class CreditorDto {
     private Long id;
     private String name;
     private String surname;
+    @Pattern(regexp = "^\\+374\\d{8}$\n")
     private String phoneNumber;
 
     public Long getId() {

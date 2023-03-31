@@ -1,4 +1,21 @@
 package com.epam.money_management.rest.service.impl;
 
-public class CreditorServiceImpl {
+import com.epam.money_management.model.entity.Creditor;
+import com.epam.money_management.rest.controller.AdminController;
+import com.epam.money_management.rest.repository.CreditorRepository;
+import com.epam.money_management.rest.service.CreditorService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class CreditorServiceImpl implements CreditorService {
+
+    private final CreditorRepository creditorRepository;
+    private static final Logger logger = LoggerFactory.getLogger(Creditor.class);
+
+
+    @Autowired
+    public CreditorServiceImpl(CreditorRepository creditorRepository) {
+        this.creditorRepository = creditorRepository;
+    }
 }

@@ -2,8 +2,6 @@ package com.epam.money_management.model.entity;
 
 import jakarta.persistence.*;
 
-import javax.validation.constraints.Pattern;
-
 @Entity
 @Table(name = "admin")
 public class Administrator {
