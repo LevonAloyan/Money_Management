@@ -1,17 +1,12 @@
-package com.epam.money_management.model.entity;
-
-import jakarta.persistence.*;
+package com.epam.money_management.model.dto;
 
 import javax.validation.constraints.Pattern;
 
-@Entity
-@Table(name = "admin")
-public class Administrator {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class AdminDto {
     private Long id;
     private String name;
     private String surname;
+    @Pattern(regexp = "^\\+374\\d{8}$\n")
     private String phoneNumber;
 
     public Long getId() {
@@ -48,7 +43,7 @@ public class Administrator {
 
     @Override
     public String toString() {
-        return "Administrator{" +
+        return "AdminDto{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
