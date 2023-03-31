@@ -1,4 +1,9 @@
 package com.epam.money_management.rest.repository;
 
-public interface CreditorRepository {
+import com.epam.money_management.model.entity.Creditor;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CreditorRepository extends JpaRepository<Creditor,Long> {
 }
