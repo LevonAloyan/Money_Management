@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+import static com.epam.money_management.constants.ControllerHelper.*;
+
 @Controller
-@RequestMapping("/home/")
+@RequestMapping()
 public class AdminController {
 
     private final DebtService debtService;
@@ -29,5 +31,16 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-
+    @GetMapping("/home")
+    public String adminPage(){
+        return HOME_HTML;
+    }
+    @GetMapping("/history")
+    public String historyPage(){
+        return HISTORY_HTML;
+    }
+    @GetMapping("/contact")
+    public String contactPage(){
+        return CONTACT_HTML;
+    }
 }
