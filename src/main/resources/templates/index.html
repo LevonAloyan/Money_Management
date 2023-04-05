@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments/calculator :: header"></head>
+<head th:insert="fragments/fragments :: header"></head>
 <body class="u-body u-xl-mode" data-lang="en">
 <header class="u-clearfix u-grey-5 u-header u-header" id="sec-a6db">
     <div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1">
+        <a th:href="@{/home}" class="u-image u-logo u-image-1">
             <img src="/static/img/default-logo.png" class="u-logo-image u-logo-image-1">
         </a>
         <nav class="u-menu u-menu-hamburger u-offcanvas u-menu-1" data-responsive-from="XL">
@@ -47,9 +47,11 @@
                         <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
                             <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/home}">Home</a>
                             </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/history}">History</a>
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                                      th:href="@{/history}">History</a>
                             </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/contact}">Contact</a>
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                                      th:href="@{/contact}">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -125,8 +127,8 @@
                         <div class="u-container-layout u-valign-top u-container-layout-2">
                             <div class="u-container-style u-custom-color-3 u-expanded-width u-group u-radius-20 u-shape-round u-group-1">
                                 <div class="u-container-layout u-container-layout-3 calculator-ankap-ban">
-                                    <div th:insert="fragments/calculator :: calculator"></div>
-                                     </div>
+                                    <div th:insert="fragments/fragments :: calculator"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -134,11 +136,8 @@
                          data-animation-name="customAnimationIn" data-animation-duration="2000">
                         <div class="u-container-layout u-valign-top u-container-layout-2">
                             <div class="u-container-style u-custom-color-3 u-expanded-width u-group u-radius-20 u-shape-round u-group-1">
-                                <div class="u-container-layout u-container-layout-3">
-                                    <h5 class="u-align-center u-custom-font u-font-montserrat u-text u-text-default u-text-2">
-                                        Exchange</h5>
-                                    <script type="text/javascript"
-                                            src="http://rate.am/informer/rate/script/default.aspx?uid=UI-16368479&width=315&height=232&cb=0&bgcolor=FFFFFF&lang=en"></script>
+                                <div class="u-container-layout u-container-layout-3" style="display: flex !important; flex-direction: column !important; align-content: stretch !important; align-items: center !important; flex-wrap: nowrap !important; justify-content: space-between !important;">
+                                    <div th:insert="fragments/fragments :: exchange"></div>
                                 </div>
                             </div>
                         </div>
