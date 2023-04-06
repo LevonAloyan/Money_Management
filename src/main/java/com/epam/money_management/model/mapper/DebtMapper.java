@@ -15,7 +15,7 @@ public class DebtMapper {
         debt.setAdmin(debtDto.getAdmin());
         debt.setAmount(debtDto.getAmount());
         debt.setCreditor(debtDto.getCreditor());
-        debt.setAmountType(debtDto.getAmountType());
+        debt.setCurrency(debtDto.getCurrency());
         debt.setTypeOfDebt(debtDto.getTypeOfDebt());
         debt.setReturnDate(debtDto.getReturnDate());
         debt.setBorrowingDate(debtDto.getBorrowingDate());
@@ -29,7 +29,7 @@ public class DebtMapper {
         debtDto.setAdmin(debt.getAdmin());
         debtDto.setAmount(debt.getAmount());
         debtDto.setCreditor(debt.getCreditor());
-        debtDto.setAmountType(debt.getAmountType());
+        debtDto.setCurrency(debt.getCurrency());
         debtDto.setTypeOfDebt(debt.getTypeOfDebt());
         debtDto.setReturnDate(debt.getReturnDate());
         debtDto.setBorrowingDate(debt.getBorrowingDate());

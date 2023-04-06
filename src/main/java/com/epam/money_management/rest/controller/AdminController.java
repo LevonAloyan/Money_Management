@@ -1,16 +1,14 @@
 package com.epam.money_management.rest.controller;
 
+import com.epam.money_management.constants.Currency;
 import com.epam.money_management.constants.Type;
 import com.epam.money_management.model.dto.DebtDto;
 import com.epam.money_management.rest.service.DebtService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 import static com.epam.money_management.constants.ControllerHelper.*;
 
@@ -25,17 +23,22 @@ public class AdminController {
     }
 
     @GetMapping("{id}")
-    public String open(@PathVariable("id") Long adminId) {
-        debtService.allLenders(adminId, Type.LENT);
-        debtService.allLenders(adminId, Type.BORROWED);
+    public String open(@PathVariable("id") Long adminId, Model model) {
+        model.addAttribute("debt", new DebtDto());
+        model.addAttribute("lenders", debtService.allLendersOrBorrowers(adminId, Type.LENT));
+        model.addAttribute("borrowers", debtService.allLendersOrBorrowers(adminId, Type.BORROWED));
+        model.addAttribute("currencies", Currency.values());
+        model.addAttribute("typesOfDebt", Type.values());
         return HOME_HTML;
     }
+
     @GetMapping("/history")
-    public String historyPage(){
+    public String historyPage() {
         return HISTORY_HTML;
     }
+
     @GetMapping("/contact")
-    public String contactPage(){
+    public String contactPage() {
         return CONTACT_HTML;
     }
 }

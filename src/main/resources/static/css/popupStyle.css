@@ -7,7 +7,7 @@
 
 .popup-container {
     display: none;
-    width: 492px;
+    width: 45%;
     height: 499px;
     padding: 20px;
     border-radius: 4px;
@@ -36,11 +36,13 @@
     font-weight: 700;
     line-height: 24px;
     padding: 16px 23px;
-    position: relative;
+    position: absolute;
     text-decoration: none;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    left: 77%;
+    margin-top: 53%;
 }
 
 .button-save:hover,
@@ -106,8 +108,8 @@ form {
     width: 100%;
     display: flex;
     padding: 10px;
-    margin-top: 30px;
     height: 63%;
+    margin-top: -6%;
 }
 
 .half {
@@ -135,23 +137,32 @@ form {
 }
 
 
-.popupTitle {
-    font-weight: bold;
-    text-align: center;
-    color: #6d71e5;
-}
-
 .popup-label-title {
     font-size: 18px;
     height: 1.2em;
     margin-top: 20px;
 }
 
+.popupTitle  {
+    text-align: center;
+    color: #6d71e5;
+}
+
 .inputsInPopup{
     margin-top: 4px;
     margin-bottom: 4px;
     display: block;
-    width: 90%;
+    width: 100%;
     border-radius: 1px;
     border-width: 1.5px;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

@@ -32,7 +32,7 @@ public class DebtServiceImpl implements DebtService {
     }
 
     @Override
-    public List<DebtDto> allLenders(Long id, Type type) {
+    public List<DebtDto> allLendersOrBorrowers(Long id, Type type) {
         return DebtMapper.toDebtDtoList(debtRepository.findAllByAdminIdAndTypeOfDebt(id,type));
     }
 
