@@ -15,7 +15,7 @@ import java.util.List;
 import static com.epam.money_management.constants.ControllerHelper.*;
 
 @Controller
-@RequestMapping()
+@RequestMapping("/home/")
 public class AdminController {
 
     private final DebtService debtService;
@@ -25,14 +25,9 @@ public class AdminController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<List<DebtDto>> open(@PathVariable("id") Long adminId) {
+    public String open(@PathVariable("id") Long adminId) {
         debtService.allLenders(adminId, Type.LENT);
         debtService.allLenders(adminId, Type.BORROWED);
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
-
-    @GetMapping("/home")
-    public String adminPage(){
         return HOME_HTML;
     }
     @GetMapping("/history")

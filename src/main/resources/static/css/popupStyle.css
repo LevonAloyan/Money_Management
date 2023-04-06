@@ -1,0 +1,157 @@
+/*Button part styles*/
+.create {
+    display: block;
+    transition: all 0.5s ease;
+    height: 7%;
+}
+
+.popup-container {
+    display: none;
+    width: 492px;
+    height: 499px;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background-color: white;
+}
+
+
+.popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+}
+
+
+/* CSS */
+.button-save {
+    background-color: transparent;
+    border: 1px solid #6d71e5;
+    box-sizing: border-box;
+    color: white;
+    font-family: "Avenir Next LT W01 Bold", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    padding: 16px 23px;
+    position: relative;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-save:hover,
+.button-save:active {
+    outline: 0;
+}
+
+.button-save:hover {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.button-save:before {
+    background-color: #9699f6;
+    content: "";
+    height: calc(100% + 3px);
+    position: absolute;
+    right: -7px;
+    top: -9px;
+    transition: background-color 300ms ease-in;
+    width: 100%;
+    z-index: -1;
+}
+
+.button-save:hover:before {
+    background-color: #6d71e5;
+}
+
+@media (min-width: 768px) {
+    .button-save {
+        padding: 16px 32px;
+    }
+}
+
+.popup-container .close-btn {
+    position: absolute;
+    right: 20px;
+    border-width: 0px;
+    top: 15px;
+    font-size: 25px;
+    cursor: pointer;
+    background-color: #00000000;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+h1 {
+    text-align: left;
+    color: #007EB4;
+    margin-top: 0px;
+
+}
+
+form {
+    margin: 0px;
+    margin-left: 0px;
+    margin-right: 4px;
+}
+
+.popup-wrapper {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    margin-top: 30px;
+    height: 63%;
+}
+
+.half {
+    width: 50%;
+    padding: 0px;
+    margin-left: 0px;
+    height: 323px;
+}
+
+.half2 {
+    width: 50%;
+    margin-left: 12%;
+    height: 253px;
+
+}
+
+.halfSection {
+    margin-top: 27%;
+    display: inline-block;
+}
+
+.error {
+    font-size: 0.7em;
+    color: red;
+}
+
+
+.popupTitle {
+    font-weight: bold;
+    text-align: center;
+    color: #6d71e5;
+}
+
+.popup-label-title {
+    font-size: 18px;
+    height: 1.2em;
+    margin-top: 20px;
+}
+
+.inputsInPopup{
+    margin-top: 4px;
+    margin-bottom: 4px;
+    display: block;
+    width: 90%;
+    border-radius: 1px;
+    border-width: 1.5px;
+}
