@@ -8,4 +8,6 @@ import java.util.List;
 public interface CreditorService {
 
     List<CreditorDto> findAll();
+    List<CreditorDto> allLenders();
+    List<CreditorDto> allBorrowers();
 }

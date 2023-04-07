@@ -36,4 +36,9 @@ public class DebtServiceImpl implements DebtService {
         return DebtMapper.toDebtDtoList(debtRepository.findAllByAdminIdAndTypeOfDebt(id,type));
     }
 
+    @Override
+    public void save(DebtDto debtDto) {
+        debtRepository.save(DebtMapper.toDebt(debtDto));
+    }
+
 }
