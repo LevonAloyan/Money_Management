@@ -1,22 +1,31 @@
 package com.epam.money_management.model.dto;
 
-import com.epam.money_management.constants.AmountType;
+import com.epam.money_management.constants.Currency;
 import com.epam.money_management.constants.Type;
 import com.epam.money_management.model.entity.Admin;
 import com.epam.money_management.model.entity.Creditor;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class DebtDto {
     private Long id;
+    @NotNull(message = "Please, fill the required fields")
     private Type typeOfDebt;
+    @Min(value = 1, message = "The debt value must be grater than 0")
+    @NotNull(message = "Please, fill the required fields")
     private Long amount;
-    private AmountType amountType;
+    @NotNull(message = "Please, fill the required field")
+    private Currency currency;
+    @NotNull(message = "")
     private LocalDate borrowingDate;
+    @NotNull(message = "Please, fill the required field")
     private LocalDate returnDate;
+    @NotNull(message = "Please, fill the required field")
+    private Creditor creditor;
     private String note;
     private Admin admin;
-    private Creditor creditor;
 
     public Long getId() {
         return id;
@@ -42,12 +51,12 @@ public class DebtDto {
         this.amount = amount;
     }
 
-    public AmountType getAmountType() {
-        return amountType;
+    public Currency getCurrency() {
+        return currency;
     }
 
-    public void setAmountType(AmountType amountType) {
-        this.amountType = amountType;
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
     }
 
     public LocalDate getBorrowingDate() {
@@ -96,7 +105,7 @@ public class DebtDto {
                 "id=" + id +
                 ", typeOfDebt=" + typeOfDebt +
                 ", amount=" + amount +
-                ", amountType=" + amountType +
+                ", currency=" + currency +
                 ", borrowingDate=" + borrowingDate +
                 ", returnDate=" + returnDate +
                 ", note='" + note + '\'' +

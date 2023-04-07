@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;" lang="en" xmlns:th="http://www.thymeleaf.org">
+<html id="html" style="font-size: 16px;" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="fragments/fragments :: header"></head>
 <body class="u-body u-xl-mode" data-lang="en">
 <header class="u-clearfix u-grey-5 u-header u-header" id="sec-a6db">
@@ -80,9 +80,11 @@
 </section>
 <section class="u-clearfix u-custom-color-4 u-section-2" id="sec-d3ed">
     <div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com/k/children-website-templates"
-           class="u-align-left u-border-none u-btn u-btn-round u-button-style u-custom-color-3 u-radius-50 u-btn-1">+
-            New</a>
+        <button onclick="PopUpShow()"
+                class="u-align-left u-border-none u-btn u-btn-round u-button-style u-custom-color-3 u-radius-50 u-btn-1">
+            +
+            New
+        </button>
         <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
             <div class="u-gutter-0 u-layout">
                 <div class="u-layout-col">
@@ -94,7 +96,10 @@
                                          data-animation-name="customAnimationIn" data-animation-duration="2000">
                                         <div class="u-container-layout u-valign-top u-container-layout-2">
                                             <h2 class="u-align-left u-text u-text-default u-text-3"> Lent</h2>
-                                            <p class="u-align-left u-text u-text-default u-text-2">N S</p>
+                                            <div th:each="lender:${lenders}">
+                                                <p class="u-align-left u-text u-text-default u-text-4"
+                                                   th:text="${lender.getName() +' '+ lender.getSurname()}">N S</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +110,10 @@
                                          data-animation-name="customAnimationIn" data-animation-duration="2000">
                                         <div class="u-container-layout u-valign-top u-container-layout-4">
                                             <h2 class="u-align-left u-text u-text-default u-text-3">Borrowed</h2>
-                                            <p class="u-align-left u-text u-text-default u-text-4">N S</p>
+                                            <div th:each="borrower:${borrowers}">
+                                                <p class="u-align-left u-text u-text-default u-text-2"
+                                                   th:text="${borrower.getName() + ' ' + borrower.getSurname()}">N S</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +144,8 @@
                          data-animation-name="customAnimationIn" data-animation-duration="2000">
                         <div class="u-container-layout u-valign-top u-container-layout-2">
                             <div class="u-container-style u-custom-color-3 u-expanded-width u-group u-radius-20 u-shape-round u-group-1">
-                                <div class="u-container-layout u-container-layout-3" style="display: flex !important; flex-direction: column !important; align-content: stretch !important; align-items: center !important; flex-wrap: nowrap !important; justify-content: space-between !important;">
+                                <div class="u-container-layout u-container-layout-3"
+                                     style="display: flex !important; flex-direction: column !important; align-content: stretch !important; align-items: center !important; flex-wrap: nowrap !important; justify-content: space-between !important;">
                                     <div th:insert="fragments/fragments :: exchange"></div>
                                 </div>
                             </div>
@@ -154,4 +163,79 @@
     </div>
 </footer>
 </body>
+<div class="popup-container" id="popup-container">
+    <button class="close-btn" title="close" id="hide" onclick="PopUpHide()">×</button>
+    <h1 class="popupTitle">New Debt</h1>
+
+    <form id="form" class="form" th:method="POST" th:action="@{''}" th:object="${debt}">
+
+        <!--        <script th:inline="javascript" >-->
+        <!--            PopUpShow();-->
+        <!--        </script>-->
+
+        <div class="popup-wrapper">
+            <div class="half">
+                <label class="popup-label-title">Financing</label>
+                <select class="inputsInPopup" th:field="*{typeOfDebt}">
+                    <option th:if="*{typeOfDebt == null}" class="short" th:text="'Select financing type'"
+                            data-limit="23"
+                            th:value="null"></option>
+                    <option
+                            th:each="typeOfDebt:${typesOfDebt}"
+                            th:text="${typeOfDebt.getType()}"
+                            th:value="${typeOfDebt}">
+                    </option>
+                </select>
+
+                <label class="popup-label-title">Borrowing date</label>
+                <input class="inputsInPopup" type="date"
+                       th:name="borrowingDate"
+                       th:value="*{borrowingDate}"
+                       th:field="*{borrowingDate}"
+                       th:id="borrowingDate"/>
+
+                <label class="popup-label-title">Amount</label>
+                <input type="number" id="amount"
+                       class="inputsInPopup" th:name="amount"
+                       th:value="*{amount}"
+                       maxlength="3" onkeypress="return (event.charCode !=8 && event.charCode ==0
+                        || (event.charCode >= 48 && event.charCode <= 57))">
+
+                <label class="popup-label-title">Note</label>
+                <input class="inputsInPopup" th:value="*{note}">
+
+
+            </div>
+            <div class="half2">
+                <label class="popup-label-title">Counterparties</label>
+                <select class="inputsInPopup">
+                    <option>Creditor</option>
+                    <option>Debetor</option>
+                </select>
+
+                <a class="linkInPopup">+</a>
+                <label class="popup-label-title">Return date</label>
+                <input class="inputsInPopup" type="date"
+                       th:name="date"
+                       th:value="*{returnDate}"
+                       th:field="*{returnDate}"
+                       th:id="date"/>
+                <label class="popup-label-title">Currancy</label>
+                <select class="inputsInPopup" th:field="*{currency}">
+                    <option th:if="*{currency == null}" class="short" th:text="'Select currency'" data-limit="23"
+                            th:value="null"></option>
+                    <option
+                            th:each="currency:${currencies}"
+                            th:text="${currency.getCurrency()}"
+                            th:value="${currency}">
+                    </option>
+                </select>
+            </div>
+            <div name="btn-div">
+                <button type="submit" class="button-save" id="submit"><b>Save</b></button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>popUpPositionDynamicChange()</script>
 </html>

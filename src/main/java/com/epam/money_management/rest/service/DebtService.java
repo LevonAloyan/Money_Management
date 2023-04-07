@@ -9,6 +9,8 @@ public interface DebtService {
 
     List<DebtDto> findAllByAdminId(Long adminId);
 
-    List<DebtDto> allLenders(Long adminId, Type type);
+    List<DebtDto> allLendersOrBorrowers(Long adminId, Type type);
+
+    void save(DebtDto debtDto);
 
 }

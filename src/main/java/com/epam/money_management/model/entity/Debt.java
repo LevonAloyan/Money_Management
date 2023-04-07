@@ -1,6 +1,6 @@
 package com.epam.money_management.model.entity;
 
-import com.epam.money_management.constants.AmountType;
+import com.epam.money_management.constants.Currency;
 import com.epam.money_management.constants.Type;
 import jakarta.persistence.*;
 
@@ -15,7 +15,7 @@ public class Debt {
     private Long id;
     private Type typeOfDebt;
     private Long amount;
-    private AmountType amountType;
+    private Currency currency;
     private LocalDate borrowingDate;
     private LocalDate returnDate;
     private String note;
@@ -48,12 +48,12 @@ public class Debt {
         this.amount = amount;
     }
 
-    public AmountType getAmountType() {
-        return amountType;
+    public Currency getCurrency() {
+        return currency;
     }
 
-    public void setAmountType(AmountType amountType) {
-        this.amountType = amountType;
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
     }
 
     public LocalDate getBorrowingDate() {
@@ -102,7 +102,7 @@ public class Debt {
                 "id=" + id +
                 ", typeOfDebt=" + typeOfDebt +
                 ", amount=" + amount +
-                ", amountType=" + amountType +
+                ", currency=" + currency +
                 ", borrowingDate=" + borrowingDate +
                 ", returnDate=" + returnDate +
                 ", note='" + note + '\'' +
