@@ -33,13 +33,13 @@ public class AdminController {
     }
 
     @PostMapping()
-    public String saveDebt(@ModelAttribute("debt") @Valid DebtDto debt, BindingResult result,
+    public String saveDebt(@ModelAttribute("debt") @Valid DebtDto debtDto, BindingResult result,
                            @PathVariable("adminId") Long adminId, Model model) {
         if (result.hasErrors()) {
             return sendToFrontNecessaryFieldsForPopup(adminId, model);
         }
-        debtService.save(debt, adminId);
-        return REDIRECT_HOME_HTML + adminId;
+        debtService.save(debtDto, adminId);
+        return REDIRECT_TO_HTML + adminId;
     }
 
     @GetMapping("/history")

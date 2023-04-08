@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="form" class="form" th:method="POST" th:action="@{'/'+${adminId}+'/creditor'}" th:object="${creditor}">
+
+    <script th:inline="javascript" th:if="${#fields.hasAnyErrors()}">
+        PopUpShow();
+    </script>
+
+    <div class="popup-wrapper">
+        <div class="half">
+            <label class="popup-label-title">Name</label>
+            <input  class="inputsInPopup" type="text" th:field="*{name}" th:value="*{name}">
+            <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+
+
+            <label class="popup-label-title">Surname</label>
+            <input class="inputsInPopup" type="text" th:field="*{surname}" th:value="*{surname}"/>
+            <div class="error" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div>
+
+
+            <label class="popup-label-title">Phone number</label>
+            <input  class="inputsInPopup" type="text" th:field="*{phoneNumber}" th:value="*{phoneNumber}">
+            <div class="error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
+        </div>
+        <div class="half2">
+        </div>
+        <div name="btn-div">
+            <button type="submit" class="button-save" id="submit"><b>Save</b></button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

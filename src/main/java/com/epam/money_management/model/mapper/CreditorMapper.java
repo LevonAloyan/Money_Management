@@ -12,8 +12,8 @@ public class CreditorMapper {
         Creditor creditor = new Creditor();
         creditor.setId(creditorDto.getId());
         creditor.setName(creditorDto.getName());
-        creditor.setSurname(creditor.getSurname());
-        creditor.setPhoneNumber(creditor.getPhoneNumber());
+        creditor.setSurname(creditorDto.getSurname());
+        creditor.setPhoneNumber(creditorDto.getPhoneNumber());
         return creditor;
     }
 

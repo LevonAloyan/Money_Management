@@ -63,5 +63,10 @@ public class CreditorServiceImpl implements CreditorService {
         return borrowersList;
     }
 
+    @Override
+    public void save(CreditorDto creditorDto) {
+        creditorRepository.save(CreditorMapper.toCreditor(creditorDto));
+    }
+
 
 }

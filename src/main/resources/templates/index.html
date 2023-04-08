@@ -169,9 +169,9 @@
 
     <form id="form" class="form" th:method="POST" th:action="@{'/'+ ${adminId}}" th:object="${debt}">
 
-                <script th:inline="javascript" th:if="${#fields.hasAnyErrors()}">
-                    PopUpShow();
-                </script>
+        <script th:inline="javascript" th:if="${#fields.hasAnyErrors()}">
+            PopUpShow();
+        </script>
 
         <div class="popup-wrapper">
             <div class="half">
@@ -208,7 +208,7 @@
 
 
                 <label class="popup-label-title">Note</label>
-                <input class="inputsInPopup"th:field="*{note}" th:value="*{note}">
+                <input class="inputsInPopup" th:field="*{note}" th:value="*{note}">
 
 
             </div>
@@ -226,7 +226,7 @@
                 <div class="error" th:if="${#fields.hasErrors('creditor')}" th:errors="*{creditor}"></div>
 
 
-                <a class="linkInPopup">+</a>
+                <a class="linkInPopup" th:href="@{'/'+${adminId}+'/creditor'}">+</a>
                 <label class="popup-label-title">Return date</label>
                 <input class="inputsInPopup" type="date"
                        th:name="date"
