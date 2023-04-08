@@ -11,6 +11,6 @@ public interface DebtService {
 
     List<DebtDto> allLendersOrBorrowers(Long adminId, Type type);
 
-    void save(DebtDto debtDto);
+    void save(DebtDto debtDto, Long adminId);
 
 }

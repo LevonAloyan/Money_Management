@@ -36,25 +36,29 @@ public class CreditorServiceImpl implements CreditorService {
     }
 
     @Override
-    public List<CreditorDto> allLenders() {
+    public List<CreditorDto> allLenders(Long adminId) {
         List<CreditorDto> lendersList = new ArrayList<>();
-        List<DebtDto> debtsDto = debtService.allLendersOrBorrowers(1L, Type.LENT);
+        List<DebtDto> debtsDto = debtService.allLendersOrBorrowers(adminId, Type.LENT);
+        logger.info("Found all debts with lent status");
         if (!debtsDto.isEmpty()) {
             for (DebtDto debtDto : debtsDto) {
                 lendersList.add(CreditorMapper.toDto(debtDto.getCreditor()));
             }
+            logger.info("Added to list all creditors at debt with lent status");
         }
         return lendersList;
     }
 
     @Override
-    public List<CreditorDto> allBorrowers() {
+    public List<CreditorDto> allBorrowers(Long adminId) {
         List<CreditorDto> borrowersList = new ArrayList<>();
-        List<DebtDto> debtsDto = debtService.allLendersOrBorrowers(1L, Type.BORROWED);
+        List<DebtDto> debtsDto = debtService.allLendersOrBorrowers(adminId, Type.BORROWED);
+        logger.info("Found all debts with borrowed status");
         if (!debtsDto.isEmpty()) {
             for (DebtDto debtDto : debtsDto) {
                 borrowersList.add(CreditorMapper.toDto(debtDto.getCreditor()));
             }
+            logger.info("Added to list all creditors at debt with borrowed status");
         }
         return borrowersList;
     }

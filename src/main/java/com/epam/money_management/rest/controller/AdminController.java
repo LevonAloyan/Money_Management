@@ -8,21 +8,17 @@ import com.epam.money_management.rest.service.DebtService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 import static com.epam.money_management.constants.ControllerHelper.*;
 
 @Controller
-@RequestMapping()
+@RequestMapping("/{adminId}")
 public class AdminController {
 
     private final DebtService debtService;
-
     private final CreditorService creditorService;
 
     public AdminController(DebtService debtService, CreditorService creditorService) {
@@ -31,28 +27,21 @@ public class AdminController {
     }
 
     @GetMapping()
-    public String open(Model model) {
+    public String open(@PathVariable("adminId") Long adminId, Model model) {
         model.addAttribute("debt", new DebtDto());
-        model.addAttribute("lenders", creditorService.allLenders());
-        model.addAttribute("borrowers",creditorService.allBorrowers());
-        model.addAttribute("currencies", Currency.values());
-        model.addAttribute("typesOfDebt", Type.values());
-        return HOME_HTML;
+        return sendToFrontNecessaryFieldsForPopup(adminId, model);
     }
 
     @PostMapping()
-    public String saveDebt(@ModelAttribute("debt") @Valid DebtDto debtDto, BindingResult result,
-                           Model model) {
+    public String saveDebt(@ModelAttribute("debt") @Valid DebtDto debt, BindingResult result,
+                           @PathVariable("adminId") Long adminId, Model model) {
         if (result.hasErrors()) {
-            model.addAttribute("lenders", creditorService.allLenders());
-            model.addAttribute("borrowers", creditorService.allBorrowers());
-            model.addAttribute("currencies", Currency.values());
-            model.addAttribute("typesOfDebt", Type.values());
-            return HOME_HTML;
+            return sendToFrontNecessaryFieldsForPopup(adminId, model);
         }
-        debtService.save(debtDto);
-        return REDIRECT_HOME_HTML;
+        debtService.save(debt, adminId);
+        return REDIRECT_HOME_HTML + adminId;
     }
+
     @GetMapping("/history")
     public String historyPage() {
         return HISTORY_HTML;
@@ -61,5 +50,15 @@ public class AdminController {
     @GetMapping("/contact")
     public String contactPage() {
         return CONTACT_HTML;
+    }
+
+    private String sendToFrontNecessaryFieldsForPopup(Long adminId, Model model) {
+        model.addAttribute("adminId", adminId);
+        model.addAttribute("typesOfDebt", Type.values());
+        model.addAttribute("currencies", Currency.values());
+        model.addAttribute("creditors", creditorService.findAll());
+        model.addAttribute("lenders", creditorService.allLenders(adminId));
+        model.addAttribute("borrowers", creditorService.allBorrowers(adminId));
+        return HOME_HTML;
     }
 }

@@ -167,11 +167,11 @@
     <button class="close-btn" title="close" id="hide" onclick="PopUpHide()">×</button>
     <h1 class="popupTitle">New Debt</h1>
 
-    <form id="form" class="form" th:method="POST" th:action="@{''}" th:object="${debt}">
+    <form id="form" class="form" th:method="POST" th:action="@{'/'+ ${adminId}}" th:object="${debt}">
 
-        <!--        <script th:inline="javascript" >-->
-        <!--            PopUpShow();-->
-        <!--        </script>-->
+                <script th:inline="javascript" th:if="${#fields.hasAnyErrors()}">
+                    PopUpShow();
+                </script>
 
         <div class="popup-wrapper">
             <div class="half">
@@ -186,6 +186,8 @@
                             th:value="${typeOfDebt}">
                     </option>
                 </select>
+                <div class="error" th:if="${#fields.hasErrors('typeOfDebt')}" th:errors="*{typeOfDebt}"></div>
+
 
                 <label class="popup-label-title">Borrowing date</label>
                 <input class="inputsInPopup" type="date"
@@ -193,6 +195,8 @@
                        th:value="*{borrowingDate}"
                        th:field="*{borrowingDate}"
                        th:id="borrowingDate"/>
+                <div class="error" th:if="${#fields.hasErrors('borrowingDate')}" th:errors="*{borrowingDate}"></div>
+
 
                 <label class="popup-label-title">Amount</label>
                 <input type="number" id="amount"
@@ -200,18 +204,27 @@
                        th:value="*{amount}"
                        maxlength="3" onkeypress="return (event.charCode !=8 && event.charCode ==0
                         || (event.charCode >= 48 && event.charCode <= 57))">
+                <div class="error" th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"></div>
+
 
                 <label class="popup-label-title">Note</label>
-                <input class="inputsInPopup" th:value="*{note}">
+                <input class="inputsInPopup"th:field="*{note}" th:value="*{note}">
 
 
             </div>
             <div class="half2">
                 <label class="popup-label-title">Counterparties</label>
-                <select class="inputsInPopup">
-                    <option>Creditor</option>
-                    <option>Debetor</option>
+                <select class="inputsInPopup" th:field="*{creditor}">
+                    <option th:if="*{creditor == null}" class="short" th:text="'Select creditor'" data-limit="23"
+                            th:value="null"></option>
+                    <option
+                            th:each="creditor:${creditors}"
+                            th:text="${creditor.getName() + ' '+ creditor.getSurname()}"
+                            th:value="${creditor.id}">
+                    </option>
                 </select>
+                <div class="error" th:if="${#fields.hasErrors('creditor')}" th:errors="*{creditor}"></div>
+
 
                 <a class="linkInPopup">+</a>
                 <label class="popup-label-title">Return date</label>
@@ -220,6 +233,8 @@
                        th:value="*{returnDate}"
                        th:field="*{returnDate}"
                        th:id="date"/>
+                <div class="error" th:if="${#fields.hasErrors('returnDate')}" th:errors="*{returnDate}"></div>
+
                 <label class="popup-label-title">Currancy</label>
                 <select class="inputsInPopup" th:field="*{currency}">
                     <option th:if="*{currency == null}" class="short" th:text="'Select currency'" data-limit="23"
@@ -230,6 +245,8 @@
                             th:value="${currency}">
                     </option>
                 </select>
+                <div class="error" th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}"></div>
+
             </div>
             <div name="btn-div">
                 <button type="submit" class="button-save" id="submit"><b>Save</b></button>
@@ -237,5 +254,5 @@
         </div>
     </form>
 </div>
-<script>popUpPositionDynamicChange()</script>
+<script>DynamicChangeOfPopUpPosition()</script>
 </html>
