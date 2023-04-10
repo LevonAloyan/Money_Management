@@ -18,13 +18,14 @@ public class DebtDto {
     private Long amount;
     @NotNull(message = "Please, fill the required field")
     private Currency currency;
-    @NotNull(message = "")
+    @NotNull(message = "Please, fill the required field")
     private LocalDate borrowingDate;
     @NotNull(message = "Please, fill the required field")
     private LocalDate returnDate;
     @NotNull(message = "Please, fill the required field")
     private Creditor creditor;
     private String note;
+    @NotNull
     private Admin admin;
 
     public Long getId() {
