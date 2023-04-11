@@ -5,12 +5,11 @@ import com.epam.money_management.constants.Type;
 import com.epam.money_management.model.dto.DebtDto;
 import com.epam.money_management.rest.service.CreditorService;
 import com.epam.money_management.rest.service.DebtService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 import static com.epam.money_management.constants.ControllerHelper.*;
 

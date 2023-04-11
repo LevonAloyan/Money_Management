@@ -2,12 +2,11 @@ package com.epam.money_management.rest.controller;
 
 import com.epam.money_management.model.dto.CreditorDto;
 import com.epam.money_management.rest.service.CreditorService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 import static com.epam.money_management.constants.ControllerHelper.CREDITOR_CREATION_HTML;
 import static com.epam.money_management.constants.ControllerHelper.REDIRECT_TO_HTML;

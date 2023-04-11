@@ -1,8 +1,7 @@
 package com.epam.money_management.model.dto;
 
-import org.hibernate.validator.constraints.NotBlank;
-
-import javax.validation.constraints.Pattern;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 public class CreditorDto {
     private Long id;
