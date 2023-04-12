@@ -1,6 +1,6 @@
 package com.epam.money_management.model.dto;
 
-import javax.validation.constraints.Pattern;
+import jakarta.validation.constraints.Pattern;
 
 public class AdminDto {
     private Long id;

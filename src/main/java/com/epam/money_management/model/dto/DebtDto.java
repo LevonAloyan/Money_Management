@@ -4,9 +4,9 @@ import com.epam.money_management.constants.Currency;
 import com.epam.money_management.constants.Type;
 import com.epam.money_management.model.entity.Admin;
 import com.epam.money_management.model.entity.Creditor;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class DebtDto {
