@@ -1,12 +1,9 @@
 package com.epam.money_management.model.dto;
 
-import jakarta.validation.constraints.Pattern;
-
 public class AdminDto {
     private Long id;
     private String name;
     private String surname;
-    @Pattern(regexp = "^\\+374\\d{8}$\n")
     private String phoneNumber;
 
     public Long getId() {
