@@ -159,9 +159,29 @@
 </section>
 <footer class="u-align-center u-clearfix u-footer u-grey-75 u-footer" id="sec-c599">
     <div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1">All rights reserved&nbsp;©<br>Grow LLC
+        <p class="u-small-text u-text u-text-variant u-text-1" th:text="#{footer_message}">
         </p>
     </div>
+    <span th:text="#{lang.change}"></span>:
+    <select id="locales">
+        <option value=""></option>
+        <option value="en" th:text="#{lang.eng}"></option>
+        <option value="ru" th:text="#{lang.ru}"></option>
+        <option value="hy" th:text="#{lang.hy}"></option>
+    </select>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+
+                if (selectedOption != ''){
+                    window.location.replace('/1?lang=' + selectedOption);
+                }
+            });
+        });
+    </script>
 </footer>
 </body>
 <div class="popup-container" id="popup-container">
