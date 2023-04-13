@@ -3,14 +3,16 @@ package com.epam.money_management.model.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
+import static com.epam.money_management.constants.GlobalConstants.*;
+
 public class CreditorDto {
     private Long id;
-    @NotBlank
+    @NotBlank(message = EMPTY_FIELD_MSG)
     private String name;
-    @NotBlank
+    @NotBlank(message = EMPTY_FIELD_MSG)
     private String surname;
-    @Pattern(regexp = "^\\+374\\d{8}$\n")
-    @NotBlank
+    @NotBlank(message = EMPTY_FIELD_MSG)
+    @Pattern(regexp = PHONE_REGEXP, message = PHONE_FIELD_MSG)
     private String phoneNumber;
 
     public Long getId() {

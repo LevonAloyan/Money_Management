@@ -6,26 +6,30 @@ import com.epam.money_management.model.entity.Admin;
 import com.epam.money_management.model.entity.Creditor;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
+import static com.epam.money_management.constants.GlobalConstants.*;
+
 public class DebtDto {
     private Long id;
-    @NotNull(message = "Please, fill the required fields")
+    @NotNull(message = EMPTY_FIELD_MSG)
     private Type typeOfDebt;
     @Min(value = 1, message = "The debt value must be grater than 0")
-    @NotNull(message = "Please, fill the required fields")
+    @NotNull(message = EMPTY_FIELD_MSG)
     private Long amount;
-    @NotNull(message = "Please, fill the required field")
+    @NotNull(message = EMPTY_FIELD_MSG)
     private Currency currency;
-    @NotNull(message = "Please, fill the required field")
+    @NotNull(message = EMPTY_FIELD_MSG)
+    @DateTimeFormat(pattern = DATE_FORMATTER)
     private LocalDate borrowingDate;
-    @NotNull(message = "Please, fill the required field")
+    @NotNull(message = EMPTY_FIELD_MSG)
+    @DateTimeFormat(pattern = DATE_FORMATTER)
     private LocalDate returnDate;
-    @NotNull(message = "Please, fill the required field")
+    @NotNull(message = EMPTY_FIELD_MSG)
     private Creditor creditor;
     private String note;
-    @NotNull
     private Admin admin;
 
     public Long getId() {

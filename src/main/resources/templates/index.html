@@ -4,6 +4,7 @@
 <body class="u-body u-xl-mode" data-lang="en">
 <header class="u-clearfix u-grey-5 u-header u-header" id="sec-a6db">
     <div class="u-clearfix u-sheet u-sheet-1">
+        <p hidden th:text="'/'+${adminId}" id="tab"></p>
         <a th:href="@{/home}" class="u-image u-logo u-image-1">
             <img src="/static/img/default-logo.png" class="u-logo-image u-logo-image-1">
         </a>
@@ -212,9 +213,10 @@
 
                 <label class="popup-label-title">Borrowing date</label>
                 <input class="inputsInPopup" type="date"
+                       placeholder="'Borrowing Date'"
                        th:name="borrowingDate"
-                       th:value="*{borrowingDate}"
                        th:field="*{borrowingDate}"
+                       th:value="*{borrowingDate}"
                        th:id="borrowingDate"/>
                 <div class="error" th:if="${#fields.hasErrors('borrowingDate')}" th:errors="*{borrowingDate}"></div>
 
@@ -250,10 +252,11 @@
                 <a class="linkInPopup" th:href="@{'/'+${adminId}+'/creditor'}">+</a>
                 <label class="popup-label-title">Return date</label>
                 <input class="inputsInPopup" type="date"
+                       placeholder="'Return date'"
                        th:name="date"
-                       th:value="*{returnDate}"
                        th:field="*{returnDate}"
-                       th:id="date"/>
+                       th:value="*{returnDate}"
+                       th:id="returnDate"/>
                 <div class="error" th:if="${#fields.hasErrors('returnDate')}" th:errors="*{returnDate}"></div>
 
                 <label class="popup-label-title">Currancy</label>

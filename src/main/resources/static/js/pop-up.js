@@ -20,7 +20,7 @@ function PopUpShow() {
 }
 
 function PopUpHide() {
-    $("#popup-container").hide();
+    window.location.href = $("#tab").text();
     $("#sec-a6db").css("-webkit-filter", "blur(0px)");
     $("#carousel_d01d").css("-webkit-filter", "blur(0px)");
     $("#sec-d3ed").css("-webkit-filter", "blur(0px)");
