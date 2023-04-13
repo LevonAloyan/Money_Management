@@ -47,7 +47,9 @@
                         <div class="u-menu-close"></div>
                         <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
                             <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/home}">Home</a>
-                            </li><li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{'/'+${adminId}+'/creditor'}">Creditor creation</a>
+                            </li>
+                            <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                                      th:href="@{'/'+${adminId}+'/creditor'}">Creditor creation</a>
                             </li>
                             <li class="u-nav-item"><a class="u-button-style u-nav-link"
                                                       th:href="@{/history}">History</a>
@@ -99,8 +101,9 @@
                                         <div class="u-container-layout u-valign-top u-container-layout-2">
                                             <h2 class="u-align-left u-text u-text-default u-text-3"> Lent</h2>
                                             <div th:each="lender:${lenders}">
-                                                <p class="u-align-left u-text u-text-default u-text-4"
-                                                   th:text="${lender.getName() +' '+ lender.getSurname()}">N S</p>
+                                                <a class="u-align-left u-text u-text-default u-text-4"
+                                                   th:text="${lender.getName() +' '+ lender.getSurname()}"
+                                                   th:href="@{'/'+${adminId}+'/lent/'+${lender.getId()}}">N S</a>
                                             </div>
                                         </div>
                                     </div>
@@ -113,8 +116,9 @@
                                         <div class="u-container-layout u-valign-top u-container-layout-4">
                                             <h2 class="u-align-left u-text u-text-default u-text-3">Borrowed</h2>
                                             <div th:each="borrower:${borrowers}">
-                                                <p class="u-align-left u-text u-text-default u-text-2"
-                                                   th:text="${borrower.getName() + ' ' + borrower.getSurname()}">N S</p>
+                                                <a class="u-align-left u-text u-text-default u-text-2"
+                                                   th:text="${borrower.getName() + ' ' + borrower.getSurname()}"
+                                                th:href="@{'/'+${adminId}+'/borrowed/'+${borrower.getId()}}">N S</a>
                                             </div>
                                         </div>
                                     </div>
@@ -173,11 +177,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
     </script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $("#locales").change(function () {
                 var selectedOption = $('#locales').val();
 
-                if (selectedOption != ''){
+                if (selectedOption != '') {
                     window.location.replace('/1?lang=' + selectedOption);
                 }
             });
@@ -278,5 +282,4 @@
         </div>
     </form>
 </div>
-<script>DynamicChangeOfPopUpPosition()</script>
 </html>

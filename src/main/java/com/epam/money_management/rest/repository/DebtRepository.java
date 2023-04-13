@@ -14,4 +14,5 @@ public interface DebtRepository extends JpaRepository<Debt, Long> {
 
     List<Debt> findAllByAdminIdAndTypeOfDebt(Long adminId, Type type);
 
+    List<Debt> findByCreditorIdAndAdminIdAndTypeOfDebt(Long creditorId, Long adminId, Type type);
 }

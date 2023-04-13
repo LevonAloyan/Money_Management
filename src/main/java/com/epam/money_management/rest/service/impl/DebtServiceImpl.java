@@ -36,7 +36,7 @@ public class DebtServiceImpl implements DebtService {
 
     @Override
     public List<DebtDto> allLendersOrBorrowers(Long id, Type type) {
-        return DebtMapper.toDebtDtoList(debtRepository.findAllByAdminIdAndTypeOfDebt(id,type));
+        return DebtMapper.toDebtDtoList(debtRepository.findAllByAdminIdAndTypeOfDebt(id, type));
     }
 
     @Override
@@ -45,6 +45,11 @@ public class DebtServiceImpl implements DebtService {
         logger.info("Found and added admin by id");
         debtRepository.save(DebtMapper.toDebt(debtDto));
         logger.info("Created new debt");
+    }
+
+    @Override
+    public List<DebtDto> findByCreditorIdAdminIdAndTypeOfDebt(Long creditorId, Long adminId, Type type) {
+        return DebtMapper.toDebtDtoList(debtRepository.findByCreditorIdAndAdminIdAndTypeOfDebt(creditorId, adminId, type));
     }
 
 }

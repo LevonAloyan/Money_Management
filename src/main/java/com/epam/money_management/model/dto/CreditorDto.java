@@ -3,6 +3,8 @@ package com.epam.money_management.model.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
+import java.util.Comparator;
+
 import static com.epam.money_management.constants.GlobalConstants.*;
 
 public class CreditorDto {
@@ -45,6 +47,11 @@ public class CreditorDto {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public static Comparator<CreditorDto> getNameSurnameComparator() {
+        return Comparator.comparing(CreditorDto::getName)
+                .thenComparing(CreditorDto::getSurname);
     }
 
     @Override
