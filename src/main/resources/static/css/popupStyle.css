@@ -242,5 +242,51 @@ input::-webkit-inner-spin-button {
     box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
+/*Localization css*/
+.dropbtn {
+    border: none;
+    background-color: #f2f2f2;
+    padding: 0px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropText {
+    display: none;
+    position: absolute;
+    background-color: #b0d8d6;
+    min-width: 120px;
+    z-index: 1;
+}
+.dropText a {
+    color: black;
+    padding: 12px 25px;
+    text-decoration: none;
+    display: block;
+}
+.dropText a:hover {
+    background-color: #6d71e5;
+    color: white;
+}
+.dropdown:hover .dropText {
+    display: block;
+}
+.dropdown:hover .dropbtn {
+    background-color: #eeda86;
+}
+.txt2 img {
+    max-width: 3VW;
+}
+.flag-local{
+    max-width: 2VW;
+    width: 1VW;
+    height: 1VW;
+}
+
+/*Localization css is over*/
+
 
 

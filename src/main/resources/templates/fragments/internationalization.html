@@ -1,0 +1,40 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="localization">
+<div class="dropdown">
+  <img style="width: 3VW; height: 3VW;" class="dropbtn" th:src="@{/static/img/language.png}"/>
+
+  <div class="dropText">
+    <a class="txt2" th:href="'/' + ${adminId} + '?lang=en-US'">
+      <img class="flag-local" th:src="@{/static/img/us.png}" th:title="English" alt="IMG">
+    </a>
+    <a class="txt2" th:href="'/' + ${adminId} + '?lang=hy-AM'">
+      <img class="flag-local" th:src="@{/static/img/armenia.png}" th:title="Armenian" alt="IMG">
+    </a>
+    <a class="txt2" th:href="'/' + ${adminId} + '?lang=ru-RU'">
+      <img class="flag-local" th:src="@{/static/img/russia.png}" th:title= "Russian" alt="IMG">
+    </a>
+  </div>
+</div>
+</th:block>
+<th:block th:fragment="menuBar">
+<div class="u-custom-menu u-nav-container-collapse">
+  <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+    <div class="u-inner-container-layout u-sidenav-overflow">
+      <div class="u-menu-close"></div>
+      <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+        <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{'/' + ${adminId}}" th:text="#{menu_home}"></a>
+        </li><li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{'/'+${adminId} + '/creditor'}" th:text="#{menu_creditor}"></a>
+      </li>
+        <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                  th:href="@{'/'+${adminId} + '/history'}" th:text="#{menu_history}"></a>
+        </li>
+        <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                                  th:href="@{'/'+${adminId} + '/contact'}" th:text="#{menu_contact}"></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+</div>
+</th:block>
+</html>

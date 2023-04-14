@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="header">
     <link rel="icon" href="/static/img/logo.svg"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.0/morph/bootstrap.min.css">
@@ -10,7 +10,7 @@
     <meta name="keywords"
           content="Increase traffic &amp;amp; leads from search, We are always happy to serve you, Save more and get visibility for your business, ​Why you need digital marketing, ​Growth drives everything we do, ​Make your marketing more effective, ​Choose Your Pricing Plan, $ 49. 99, ​24/7 customer support service, ​​Ready for your digital success?">
     <meta name="description" content="">
-    <title>Home</title>
+    <title th:text="#{menu_home}"></title>
     <link rel="stylesheet" href="/static/css/nicepage.css" media="screen">
     <link rel="stylesheet" href="/static/css/Page-1.css" media="screen">
     <link rel="stylesheet" href="/static/css/popupStyle.css" media="screen">
@@ -50,7 +50,7 @@
                                disabled/>
                         <button type="button" class="btn btn-outline-danger reset col"
                                 style="--bs-btn-padding-x: -1.5em !important;
-                                background: linear-gradient(to right, #6d71e5 0%, #6d71e5 50%, #6d71e5 50%, #a1a4d5 100%) !important;" value="reset">RESET
+                                background: linear-gradient(to right, #6d71e5 0%, #6d71e5 50%, #6d71e5 50%, #a1a4d5 100%) !important;" value="reset" th:text="#{calc_reset}">
                         </button>
                     </div>
                     <div class="row">
@@ -125,9 +125,7 @@
 </th:block>
 
 <th:block th:fragment="exchange">
-    <h5 class="u-align-center u-custom-font u-font-montserrat u-text u-text-default u-text-2">
-        Exchange
-    </h5>
+    <h5 class="u-align-center u-custom-font u-font-montserrat u-text u-text-default u-text-2" th:text="#{exchange}"/>
     <script style="height: 20VW !important;width: 25VW !important;" type="text/javascript"
             src="http://rate.am/informer/rate/script/default.aspx?uid=UI-16368479&width=315&height=232&cb=0&bgcolor=FFFFFF&lang=en">
     </script>

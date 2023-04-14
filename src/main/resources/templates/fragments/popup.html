@@ -1,0 +1,98 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="popup">
+<div class="popup-container" id="popup-container">
+  <button class="close-btn" title="close" id="hide" onclick="PopUpHide()">×</button>
+  <h1 class="popupTitle" th:text="#{new_dept}"></h1>
+
+  <form id="form" class="form" th:method="POST" th:action="@{'/'+ ${adminId}}" th:object="${debt}">
+
+    <script th:inline="javascript" th:if="${#fields.hasAnyErrors()}">
+      PopUpShow();
+    </script>
+
+    <div class="popup-wrapper">
+      <div class="half">
+        <label class="popup-label-title" th:text="#{financing}"></label>
+        <select class="inputsInPopup" th:field="*{typeOfDebt}">
+          <option th:if="*{typeOfDebt == null}" class="short" th:text="#{selected_financing_message}"
+                  data-limit="23"
+                  th:value="null"></option>
+          <option
+                  th:each="typeOfDebt:${typesOfDebt}"
+                  th:text="${typeOfDebt.getType()}"
+                  th:value="${typeOfDebt}">
+          </option>
+        </select>
+        <div class="error" th:if="${#fields.hasErrors('typeOfDebt')}" th:errors="*{typeOfDebt}"></div>
+
+
+        <label class="popup-label-title" th:text="#{borrowing_date}"></label>
+        <input class="inputsInPopup" type="date"
+               placeholder="'Borrowing Date'"
+               th:name="borrowingDate"
+               th:field="*{borrowingDate}"
+               th:value="*{borrowingDate}"
+               th:id="borrowingDate"/>
+        <div class="error" th:if="${#fields.hasErrors('borrowingDate')}" th:errors="*{borrowingDate}"></div>
+
+
+        <label class="popup-label-title" th:text="#{amount}"></label>
+        <input type="number" id="amount"
+               class="inputsInPopup" th:name="amount"
+               th:value="*{amount}"
+               maxlength="3" onkeypress="return (event.charCode !=8 && event.charCode ==0
+                        || (event.charCode >= 48 && event.charCode <= 57))">
+        <div class="error" th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"></div>
+
+
+        <label class="popup-label-title" th:text="#{note}"></label>
+        <input class="inputsInPopup" th:field="*{note}" th:value="*{note}">
+
+
+      </div>
+      <div class="half2">
+        <label class="popup-label-title" th:text="#{counterparties}"></label>
+        <select class="inputsInPopup" th:field="*{creditor}">
+          <option th:if="*{creditor == null}" class="short" th:text="#{selected_counterparties_message}" data-limit="23"
+                  th:value="null"></option>
+          <option
+                  th:each="creditor:${creditors}"
+                  th:text="${creditor.getName() + ' '+ creditor.getSurname()}"
+                  th:value="${creditor.id}">
+          </option>
+        </select>
+        <div class="error" th:if="${#fields.hasErrors('creditor')}" th:errors="*{creditor}"></div>
+
+
+        <a class="linkInPopup" th:href="@{'/'+${adminId}+'/creditor'}">+</a>
+        <label class="popup-label-title" th:text="#{return_date}"></label>
+        <input class="inputsInPopup" type="date"
+               placeholder="'Return date'"
+               th:name="date"
+               th:field="*{returnDate}"
+               th:value="*{returnDate}"
+               th:id="returnDate"/>
+        <div class="error" th:if="${#fields.hasErrors('returnDate')}" th:errors="*{returnDate}"></div>
+
+        <label class="popup-label-title" th:text="#{currency}"></label>
+        <select class="inputsInPopup" th:field="*{currency}">
+          <option th:if="*{currency == null}" class="short" th:text="#{selected_currency_message}" data-limit="23"
+                  th:value="null"></option>
+          <option
+                  th:each="currency:${currencies}"
+                  th:text="${currency.getCurrency()}"
+                  th:value="${currency}">
+          </option>
+        </select>
+        <div class="error" th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}"></div>
+
+      </div>
+      <div name="btn-div">
+        <button type="submit" class="button-save" id="submit"><b th:text="#{save_button}"></b></button>
+      </div>
+    </div>
+  </form>
+</div>
+<script>DynamicChangeOfPopUpPosition()</script>
+</th:block>
+</html>
