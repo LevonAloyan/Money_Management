@@ -14,4 +14,6 @@ public interface CreditorService {
     Set<CreditorDto> allBorrowers(Long adminId);
 
     void save(CreditorDto creditorDto);
+
+    CreditorDto findById(Long id);
 }

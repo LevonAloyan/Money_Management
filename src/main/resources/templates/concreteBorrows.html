@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/debtsStyle.css">
+    <script class="u-script" type="text/javascript" src="/static/js/debtInfo.js" ></script>
 </head>
 <body>
-<div th:each="borrow:${concreteCreditorBorrows}">
-  <p th:text="${borrow.getAmount()}"></p>
-</div>
+
+<h1 th:text="${type}"></h1>
+<h3 th:text="${creditor}"></h3>
+
+<table>
+    <thead>
+    <tr>
+        <th>№</th>
+        <th>Amount</th>
+        <th>Currency</th>
+        <th>Borroweing date</th>
+        <th>Return date</th>
+        <th>Note</th>
+    </tr>
+    </thead>
+    <tbody th:each="borrow:${concreteCreditorBorrows}">
+    <tr onclick="toggleRow(this)" >
+        <td th:text="${borrow.getId()}"></td>
+        <td th:text="${borrow.getAmount()}"></td>
+        <td th:text="${borrow.getCurrency()}"></td>
+        <td th:text="${borrow.getBorrowingDate()}"></td>
+        <td th:text="${borrow.getReturnDate()}"></td>
+        <td th:text="${borrow.getNote()}"></td>
+    </tr>
+    <tr class="expandable-row-content" style="display: none;">
+        <td colspan="6">
+            <p> Here must be information about repayments</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

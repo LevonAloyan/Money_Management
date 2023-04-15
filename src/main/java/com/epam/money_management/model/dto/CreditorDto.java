@@ -37,6 +37,10 @@ public class CreditorDto {
         return surname;
     }
 
+    public String getFullName() {
+        return name + ' ' + surname;
+    }
+
     public void setSurname(String surname) {
         this.surname = surname;
     }
