@@ -103,7 +103,7 @@
                                             <div th:each="lender:${lenders}">
                                                 <a class="u-align-left u-text u-text-default u-text-4"
                                                    th:text="${lender.getName() +' '+ lender.getSurname()}"
-                                                   th:href="@{'/'+${adminId}+'/lent/'+${lender.getId()}}">N S</a>
+                                                   th:href="@{'/'+${adminId}+'/debt/'+${lender.getId()}}">N S</a>
                                             </div>
                                         </div>
                                     </div>
@@ -118,7 +118,7 @@
                                             <div th:each="borrower:${borrowers}">
                                                 <a class="u-align-left u-text u-text-default u-text-2"
                                                    th:text="${borrower.getName() + ' ' + borrower.getSurname()}"
-                                                th:href="@{'/'+${adminId}+'/borrowed/'+${borrower.getId()}}">N S</a>
+                                                th:href="@{'/'+${adminId}+'/debt/'+${borrower.getId()}}">N S</a>
                                             </div>
                                         </div>
                                     </div>

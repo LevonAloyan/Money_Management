@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="/static/css/debtsStyle.css">
-    <script class="u-script" type="text/javascript" src="/static/js/debtInfo.js" ></script>
+    <script class="u-script" type="text/javascript" src="/static/js/debtInfo.js"></script>
 </head>
 <body>
 
@@ -13,6 +13,7 @@
     <thead>
     <tr>
         <th>№</th>
+        <th>Type</th>
         <th>Amount</th>
         <th>Currency</th>
         <th>Borroweing date</th>
@@ -20,14 +21,15 @@
         <th>Note</th>
     </tr>
     </thead>
-    <tbody th:each="borrow:${concreteCreditorBorrows}">
-    <tr onclick="toggleRow(this)" >
-        <td th:text="${borrow.getId()}"></td>
-        <td th:text="${borrow.getAmount()}"></td>
-        <td th:text="${borrow.getCurrency()}"></td>
-        <td th:text="${borrow.getBorrowingDate()}"></td>
-        <td th:text="${borrow.getReturnDate()}"></td>
-        <td th:text="${borrow.getNote()}"></td>
+    <tbody th:each="debt:${allDebtsOdConcreteCreditor}">
+    <tr onclick="toggleRow(this)">
+        <td th:text="${debt.getId()}"></td>
+        <td th:text="${debt.getTypeOfDebt()}"></td>
+        <td th:text="${debt.getAmount()}"></td>
+        <td th:text="${debt.getCurrency()}"></td>
+        <td th:text="${debt.getBorrowingDate()}"></td>
+        <td th:text="${debt.getReturnDate()}"></td>
+        <td th:text="${debt.getNote()}"></td>
     </tr>
     <tr class="expandable-row-content" style="display: none;">
         <td colspan="6">
