@@ -9,12 +9,12 @@ import static com.epam.money_management.constants.GlobalConstants.*;
 
 public class CreditorDto {
     private Long id;
-    @NotBlank(message = EMPTY_FIELD_MSG)
+    @NotBlank(message = "{required.fields}")
     private String name;
-    @NotBlank(message = EMPTY_FIELD_MSG)
+    @NotBlank(message = "{required.fields}")
     private String surname;
-    @NotBlank(message = EMPTY_FIELD_MSG)
-    @Pattern(regexp = PHONE_REGEXP, message = PHONE_FIELD_MSG)
+    @NotBlank(message = "{required.fields}")
+    @Pattern(regexp = PHONE_REGEXP, message = "{phone.number}")
     private String phoneNumber;
 
     public Long getId() {

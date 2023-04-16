@@ -25,112 +25,19 @@
                     </svg>
                 </a>
             </div>
-            <div class="u-custom-menu u-nav-container">
-                <ul class="u-nav u-spacing-20 u-unstyled u-nav-1">
-                    <li class="u-nav-item"><a
-                            class="u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
-                            th:href="@{/home}" style="padding: 10px;">Home</a>
-                    </li>
-                    <li class="u-nav-item"><a
-                            class="u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
-                            th:href="@{/history}" style="padding: 10px;">History</a>
-                    </li>
-                    <li class="u-nav-item"><a
-                            class="u-border-active-palette-1-base u-border-hover-palette-1-base u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-1-base"
-                            th:href="@{/contact}" style="padding: 10px;">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="u-custom-menu u-nav-container-collapse">
-                <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-                    <div class="u-inner-container-layout u-sidenav-overflow">
-                        <div class="u-menu-close"></div>
-                        <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" th:href="@{/home}">Home</a>
-                            </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link"
-                                                      th:href="@{'/'+${adminId}+'/creditor'}">Creditor creation</a>
-                            </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link"
-                                                      th:href="@{/history}">History</a>
-                            </li>
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link"
-                                                      th:href="@{/contact}">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
-            </div>
+
+            <div th:insert="fragments/internationalization :: menuBar"></div>
+
+            <div th:insert="fragments/internationalization :: localization"></div>
+
         </nav>
-        <div class="u-image u-image-circle u-image-2" alt="" data-image-width="1500" data-image-height="1000"></div>
     </div>
 </header>
-<section class="u-align-center u-clearfix u-custom-color-2 u-section-1" id="carousel_d01d">
-    <div class="u-clearfix u-sheet u-sheet-1">
-        <div class="u-border-3 u-border-white u-container-style u-group u-radius-50 u-shape-round u-group-1">
-            <div class="u-container-layout u-container-layout-1">
-                <h1 class="u-align-center u-text u-text-default u-text-1">$1500000</h1>
-                <h4 class="u-text u-text-custom-color-3 u-text-default u-text-2">Total Lent</h4>
-            </div>
-        </div>
-        <div class="u-border-3 u-border-white u-container-style u-group u-radius-50 u-shape-round u-group-2">
-            <div class="u-container-layout u-container-layout-2">
-                <h1 class="u-align-center u-text u-text-default u-text-3">$1500000</h1>
-                <h4 class="u-text u-text-custom-color-3 u-text-4">Total Borrowed</h4>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="u-clearfix u-custom-color-4 u-section-2" id="sec-d3ed">
-    <div class="u-clearfix u-sheet u-sheet-1">
-        <button onclick="PopUpShow()"
-                class="u-align-left u-border-none u-btn u-btn-round u-button-style u-custom-color-3 u-radius-50 u-btn-1">
-            +
-            New
-        </button>
-        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
-            <div class="u-gutter-0 u-layout">
-                <div class="u-layout-col">
-                    <div class="u-size-60">
-                        <div class="u-layout-row">
-                            <div class="u-container-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-1">
-                                <div class="u-container-layout u-valign-middle u-container-layout-1">
-                                    <div class="u-container-style u-custom-color-5 u-expanded-width u-group u-radius-50 u-shape-round u-group-1"
-                                         data-animation-name="customAnimationIn" data-animation-duration="2000">
-                                        <div class="u-container-layout u-valign-top u-container-layout-2">
-                                            <h2 class="u-align-left u-text u-text-default u-text-3"> Lent</h2>
-                                            <div th:each="lender:${lenders}">
-                                                <a class="u-align-left u-text u-text-default u-text-4"
-                                                   th:text="${lender.getName() +' '+ lender.getSurname()}"
-                                                   th:href="@{'/'+${adminId}+'/debt/'+${lender.getId()}}">N S</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="u-container-align-center u-container-style u-layout-cell u-size-30 u-layout-cell-2">
-                                <div class="u-container-layout u-valign-middle u-container-layout-3">
-                                    <div class="u-container-align-left u-container-style u-custom-color-2 u-expanded-width u-group u-radius-50 u-shape-round u-group-2"
-                                         data-animation-name="customAnimationIn" data-animation-duration="2000">
-                                        <div class="u-container-layout u-valign-top u-container-layout-4">
-                                            <h2 class="u-align-left u-text u-text-default u-text-3">Borrowed</h2>
-                                            <div th:each="borrower:${borrowers}">
-                                                <a class="u-align-left u-text u-text-default u-text-2"
-                                                   th:text="${borrower.getName() + ' ' + borrower.getSurname()}"
-                                                th:href="@{'/'+${adminId}+'/debt/'+${borrower.getId()}}">N S</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<div th:insert="fragments/sectionDeptCount :: sectionDeptCount"></div>
+
+<div th:insert="fragments/sectionDeptList :: sectionDeptList"></div>
+
+
 <section class="u-clearfix u-custom-color-2 u-section-3" id="carousel_7275">
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
@@ -167,119 +74,9 @@
         <p class="u-small-text u-text u-text-variant u-text-1" th:text="#{footer_message}">
         </p>
     </div>
-    <span th:text="#{lang.change}"></span>:
-    <select id="locales">
-        <option value=""></option>
-        <option value="en" th:text="#{lang.eng}"></option>
-        <option value="ru" th:text="#{lang.ru}"></option>
-        <option value="hy" th:text="#{lang.hy}"></option>
-    </select>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#locales").change(function () {
-                var selectedOption = $('#locales').val();
-
-                if (selectedOption != '') {
-                    window.location.replace('/1?lang=' + selectedOption);
-                }
-            });
-        });
-    </script>
 </footer>
 </body>
-<div class="popup-container" id="popup-container">
-    <button class="close-btn" title="close" id="hide" onclick="PopUpHide()">×</button>
-    <h1 class="popupTitle">New Debt</h1>
 
-    <form id="form" class="form" th:method="POST" th:action="@{'/'+ ${adminId}}" th:object="${debt}">
+<div th:insert="fragments/popup :: popup"></div>
 
-        <script th:inline="javascript" th:if="${#fields.hasAnyErrors()}">
-            PopUpShow();
-        </script>
-
-        <div class="popup-wrapper">
-            <div class="half">
-                <label class="popup-label-title">Financing</label>
-                <select class="inputsInPopup" th:field="*{typeOfDebt}">
-                    <option th:if="*{typeOfDebt == null}" class="short" th:text="'Select financing type'"
-                            data-limit="23"
-                            th:value="null"></option>
-                    <option
-                            th:each="typeOfDebt:${typesOfDebt}"
-                            th:text="${typeOfDebt.getType()}"
-                            th:value="${typeOfDebt}">
-                    </option>
-                </select>
-                <div class="error" th:if="${#fields.hasErrors('typeOfDebt')}" th:errors="*{typeOfDebt}"></div>
-
-
-                <label class="popup-label-title">Borrowing date</label>
-                <input class="inputsInPopup" type="date"
-                       placeholder="'Borrowing Date'"
-                       th:name="borrowingDate"
-                       th:field="*{borrowingDate}"
-                       th:value="*{borrowingDate}"
-                       th:id="borrowingDate"/>
-                <div class="error" th:if="${#fields.hasErrors('borrowingDate')}" th:errors="*{borrowingDate}"></div>
-
-
-                <label class="popup-label-title">Amount</label>
-                <input type="number" id="amount"
-                       class="inputsInPopup" th:name="amount"
-                       th:value="*{amount}"
-                       maxlength="3" onkeypress="return (event.charCode !=8 && event.charCode ==0
-                        || (event.charCode >= 48 && event.charCode <= 57))">
-                <div class="error" th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"></div>
-
-
-                <label class="popup-label-title">Note</label>
-                <input class="inputsInPopup" th:field="*{note}" th:value="*{note}">
-
-
-            </div>
-            <div class="half2">
-                <label class="popup-label-title">Counterparties</label>
-                <select class="inputsInPopup" th:field="*{creditor}">
-                    <option th:if="*{creditor == null}" class="short" th:text="'Select creditor'" data-limit="23"
-                            th:value="null"></option>
-                    <option
-                            th:each="creditor:${creditors}"
-                            th:text="${creditor.getName() + ' '+ creditor.getSurname()}"
-                            th:value="${creditor.id}">
-                    </option>
-                </select>
-                <div class="error" th:if="${#fields.hasErrors('creditor')}" th:errors="*{creditor}"></div>
-
-
-                <a class="linkInPopup" th:href="@{'/'+${adminId}+'/creditor'}">+</a>
-                <label class="popup-label-title">Return date</label>
-                <input class="inputsInPopup" type="date"
-                       placeholder="'Return date'"
-                       th:name="date"
-                       th:field="*{returnDate}"
-                       th:value="*{returnDate}"
-                       th:id="returnDate"/>
-                <div class="error" th:if="${#fields.hasErrors('returnDate')}" th:errors="*{returnDate}"></div>
-
-                <label class="popup-label-title">Currancy</label>
-                <select class="inputsInPopup" th:field="*{currency}">
-                    <option th:if="*{currency == null}" class="short" th:text="'Select currency'" data-limit="23"
-                            th:value="null"></option>
-                    <option
-                            th:each="currency:${currencies}"
-                            th:text="${currency.getCurrency()}"
-                            th:value="${currency}">
-                    </option>
-                </select>
-                <div class="error" th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}"></div>
-
-            </div>
-            <div name="btn-div">
-                <button type="submit" class="button-save" id="submit"><b>Save</b></button>
-            </div>
-        </div>
-    </form>
-</div>
 </html>
