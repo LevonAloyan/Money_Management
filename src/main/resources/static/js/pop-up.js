@@ -16,6 +16,7 @@ function PopUpShow() {
     $("#carousel_d01d").css("-webkit-filter", "blur(10px)");
     $("#sec-d3ed").css("-webkit-filter", "blur(10px)");
     $("#carousel_7275").css("-webkit-filter", "blur(10px)");
+    DynamicChangeOfPopUpPosition();
     disableScroll();
 }
 

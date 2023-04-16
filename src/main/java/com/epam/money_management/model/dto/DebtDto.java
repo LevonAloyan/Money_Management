@@ -10,7 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
-import static com.epam.money_management.constants.GlobalConstants.*;
+import static com.epam.money_management.constants.ControllerHelper.DATE_FORMATTER;
 
 public class DebtDto {
     private Long id;

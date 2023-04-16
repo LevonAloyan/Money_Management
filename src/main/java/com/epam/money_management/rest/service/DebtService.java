@@ -13,4 +13,6 @@ public interface DebtService {
 
     void save(DebtDto debtDto, Long adminId);
 
+    List<DebtDto> findByCreditorIdAdminIdAndTypeOfDebt(Long creditorId, Long adminId, Type type);
+
 }

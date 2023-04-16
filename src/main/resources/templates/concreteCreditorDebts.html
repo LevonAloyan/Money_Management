@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/static/css/debtsStyle.css">
+    <script class="u-script" type="text/javascript" src="/static/js/debtInfo.js"></script>
+</head>
+<body>
+
+<h1 th:text="${type}"></h1>
+<h3 th:text="${creditor}"></h3>
+
+<table>
+    <thead>
+    <tr>
+        <th>№</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Currency</th>
+        <th>Borroweing date</th>
+        <th>Return date</th>
+        <th>Note</th>
+    </tr>
+    </thead>
+    <tbody th:each="debt:${allDebtsOdConcreteCreditor}">
+    <tr onclick="toggleRow(this)">
+        <td th:text="${debt.getId()}"></td>
+        <td th:text="${debt.getTypeOfDebt()}"></td>
+        <td th:text="${debt.getAmount()}"></td>
+        <td th:text="${debt.getCurrency()}"></td>
+        <td th:text="${debt.getBorrowingDate()}"></td>
+        <td th:text="${debt.getReturnDate()}"></td>
+        <td th:text="${debt.getNote()}"></td>
+    </tr>
+    <tr class="expandable-row-content" style="display: none;">
+        <td colspan="6">
+            <p> Here must be information about repayments</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

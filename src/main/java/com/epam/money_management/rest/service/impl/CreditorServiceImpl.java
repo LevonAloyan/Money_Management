@@ -8,13 +8,16 @@ import com.epam.money_management.model.mapper.CreditorMapper;
 import com.epam.money_management.rest.repository.CreditorRepository;
 import com.epam.money_management.rest.service.CreditorService;
 import com.epam.money_management.rest.service.DebtService;
+import org.hibernate.ObjectNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.TreeSet;
 
 @Service
 public class CreditorServiceImpl implements CreditorService {
@@ -36,8 +39,8 @@ public class CreditorServiceImpl implements CreditorService {
     }
 
     @Override
-    public List<CreditorDto> allLenders(Long adminId) {
-        List<CreditorDto> lendersList = new ArrayList<>();
+    public Set<CreditorDto> allLenders(Long adminId) {
+        Set<CreditorDto> lendersList = new TreeSet<>(CreditorDto.getNameSurnameComparator());
         List<DebtDto> debtsDto = debtService.allLendersOrBorrowers(adminId, Type.LENT);
         logger.info("Found all debts with lent status");
         if (!debtsDto.isEmpty()) {
@@ -50,8 +53,8 @@ public class CreditorServiceImpl implements CreditorService {
     }
 
     @Override
-    public List<CreditorDto> allBorrowers(Long adminId) {
-        List<CreditorDto> borrowersList = new ArrayList<>();
+    public Set<CreditorDto> allBorrowers(Long adminId) {
+        Set<CreditorDto> borrowersList = new TreeSet<>(CreditorDto.getNameSurnameComparator());
         List<DebtDto> debtsDto = debtService.allLendersOrBorrowers(adminId, Type.BORROWED);
         logger.info("Found all debts with borrowed status");
         if (!debtsDto.isEmpty()) {
@@ -68,5 +71,14 @@ public class CreditorServiceImpl implements CreditorService {
         creditorRepository.save(CreditorMapper.toCreditor(creditorDto));
     }
 
-
+    @Override
+    public CreditorDto findById(Long id) {
+        Optional<Creditor> creditor = creditorRepository.findById(id);
+        if (creditor.isPresent()) {
+            logger.info("Creditor with matching id found and returned");
+            return CreditorMapper.toDto(creditor.get());
+        }
+        logger.error("Creditor with matching id not found");
+        throw new ObjectNotFoundException(id, "Creditor with this id is not found");
+    }
 }

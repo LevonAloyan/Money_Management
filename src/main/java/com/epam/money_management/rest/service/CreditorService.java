@@ -3,14 +3,17 @@ package com.epam.money_management.rest.service;
 import com.epam.money_management.model.dto.CreditorDto;
 
 import java.util.List;
+import java.util.Set;
 
 public interface CreditorService {
 
     List<CreditorDto> findAll();
 
-    List<CreditorDto> allLenders(Long adminId);
+    Set<CreditorDto> allLenders(Long adminId);
 
-    List<CreditorDto> allBorrowers(Long adminId);
+    Set<CreditorDto> allBorrowers(Long adminId);
 
     void save(CreditorDto creditorDto);
+
+    CreditorDto findById(Long id);
 }

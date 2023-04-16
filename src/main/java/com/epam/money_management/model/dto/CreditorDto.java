@@ -3,7 +3,9 @@ package com.epam.money_management.model.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
-import static com.epam.money_management.constants.GlobalConstants.*;
+import java.util.Comparator;
+
+import static com.epam.money_management.constants.ControllerHelper.PHONE_REGEXP;
 
 public class CreditorDto {
     private Long id;
@@ -35,6 +37,10 @@ public class CreditorDto {
         return surname;
     }
 
+    public String getFullName() {
+        return name + ' ' + surname;
+    }
+
     public void setSurname(String surname) {
         this.surname = surname;
     }
@@ -45,6 +51,11 @@ public class CreditorDto {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public static Comparator<CreditorDto> getNameSurnameComparator() {
+        return Comparator.comparing(CreditorDto::getName)
+                .thenComparing(CreditorDto::getSurname);
     }
 
     @Override
