@@ -15,4 +15,8 @@ public interface DebtService {
 
     List<DebtDto> findByCreditorIdAdminIdAndTypeOfDebt(Long creditorId, Long adminId, Type type);
 
+    DebtDto findById(Long id);
+
+    void updateResidue(Long debtId,Long residue);
+
 }

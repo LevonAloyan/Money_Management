@@ -2,7 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="/static/css/debtsStyle.css">
+    <link rel="stylesheet" href="/static/css/popupStyle.css">
     <script class="u-script" type="text/javascript" src="/static/js/debtInfo.js"></script>
+    <script class="u-script" type="text/javascript" src="/static/js/pop-up.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 </head>
 <body>
 
@@ -23,9 +27,9 @@
     </thead>
     <tbody th:each="debt:${allDebtsOdConcreteCreditor}">
     <tr onclick="toggleRow(this)">
-        <td th:text="${debt.getId()}"></td>
+        <td th:text="${debt.getId()}" id="debtId" onclick="PopUpShow()"></td>
         <td th:text="${debt.getTypeOfDebt()}"></td>
-        <td th:text="${debt.getAmount()}"></td>
+        <td th:text="${debt.getAmount()}" ></td>
         <td th:text="${debt.getCurrency()}"></td>
         <td th:text="${debt.getBorrowingDate()}"></td>
         <td th:text="${debt.getReturnDate()}"></td>
@@ -38,5 +42,46 @@
     </tr>
     </tbody>
 </table>
+
+<div class="popup-container" id="popup-container">
+    <button class="close-btn" title="close" id="hide" onclick="PopUpHide()">×</button>
+    <h1 class="popupTitle" th:text="#{new_dept}"></h1>
+
+    <form id="form" class="form" th:method="POST" th:action="@{'/'+ ${adminId}+'/debt/'+${creditorId}}" th:object="${repayment}">
+
+        <script th:inline="javascript" th:if="${#fields.hasAnyErrors()}">
+            PopUpShow();
+        </script>
+
+        <div class="popup-wrapper">
+            <div class="half">
+                <label class="popup-label-title" th:text="#{repayment}"></label>
+                <input type="number" id="repayment"
+                       class="inputsInPopup" th:name="repayment"
+                       th:value="*{repayment}"
+                       maxlength="3" onkeypress="return (event.charCode !=8 && event.charCode ==0
+                        || (event.charCode >= 48 && event.charCode <= 57))">
+                <div class="error" th:if="${#fields.hasErrors('repayment')}" th:errors="*{repayment}"></div>
+
+                <label class="popup-label-title" th:text="#{repaymentDate}"></label>
+                <input class="inputsInPopup" type="date"
+                       placeholder="'Repayment Date'"
+                       th:name="repaymentDate"
+                       th:field="*{repaymentDate}"
+                       th:value="*{repaymentDate}"
+                       th:id="repaymentDate"/>
+                <div class="error" th:if="${#fields.hasErrors('repaymentDate')}" th:errors="*{repaymentDate}"></div>
+
+                <input id="debtIdInPopup" th:field="*{debtId}">
+
+            </div>
+            <div class="half2">
+            </div>
+            <div name="btn-div">
+                <button type="submit" class="button-save" id="submit"><b th:text="#{save_button}"></b></button>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>

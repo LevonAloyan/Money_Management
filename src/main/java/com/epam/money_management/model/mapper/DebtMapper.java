@@ -10,7 +10,7 @@ public class DebtMapper {
 
     public static Debt toDebt(DebtDto debtDto){
         Debt debt = new Debt();
-        debt.setId(debt.getId());
+        debt.setId(debtDto.getId());
         debt.setNote(debtDto.getNote());
         debt.setAdmin(debtDto.getAdmin());
         debt.setAmount(debtDto.getAmount());

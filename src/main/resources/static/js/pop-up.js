@@ -12,6 +12,8 @@ function enableScroll() {
 
 function PopUpShow() {
     $("#popup-container").show();
+    let dateValue = document.getElementById("debtId").innerText
+    document.getElementById("debtIdInPopup").value = dateValue
     $("#sec-a6db").css("-webkit-filter", "blur(10px)");
     $("#carousel_d01d").css("-webkit-filter", "blur(10px)");
     $("#sec-d3ed").css("-webkit-filter", "blur(10px)");

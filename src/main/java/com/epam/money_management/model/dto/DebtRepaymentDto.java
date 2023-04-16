@@ -1,7 +1,5 @@
 package com.epam.money_management.model.dto;
 
-import com.epam.money_management.model.entity.Debt;
-
 import java.time.LocalDate;
 
 public class DebtRepaymentDto {
@@ -9,7 +7,7 @@ public class DebtRepaymentDto {
     Long repayment;
     LocalDate repaymentDate;
     Long residue;
-    Debt debt;
+    Long debtId;
 
     public Long getId() {
         return id;
@@ -43,12 +41,12 @@ public class DebtRepaymentDto {
         this.residue = residue;
     }
 
-    public Debt getDebt() {
-        return debt;
+    public Long getDebtId() {
+        return debtId;
     }
 
-    public void setDebt(Debt debt) {
-        this.debt = debt;
+    public void setDebtId(Long debtId) {
+        this.debtId = debtId;
     }
 
     @Override
@@ -58,7 +56,7 @@ public class DebtRepaymentDto {
                 ", repayment=" + repayment +
                 ", repaymentDate=" + repaymentDate +
                 ", residue=" + residue +
-                ", debt=" + debt +
+                ", debt=" + debtId +
                 '}';
     }
 }
