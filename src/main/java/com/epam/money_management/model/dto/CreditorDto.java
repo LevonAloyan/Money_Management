@@ -14,7 +14,7 @@ public class CreditorDto {
     @NotBlank(message = "{required.fields}")
     private String surname;
     @NotBlank(message = "{required.fields}")
-    @Pattern(regexp = PHONE_REGEXP, message = "{phone.number}")
+//    @Pattern(regexp = PHONE_REGEXP, message = "{phone.number}")
     private String phoneNumber;
 
     public Long getId() {

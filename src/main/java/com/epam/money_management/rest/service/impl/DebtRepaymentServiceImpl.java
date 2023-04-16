@@ -23,8 +23,12 @@ public class DebtRepaymentServiceImpl implements DebtRepaymentService {
     @Override
     public void save(DebtRepaymentDto debtRepaymentDto) {
         Debt debt = DebtMapper.toDebt(debtService.findById(debtRepaymentDto.getDebtId()));
-        debtRepaymentDto.setResidue(debt.getAmount() - debtRepaymentDto.getRepayment());
-        debtService.updateResidue(debt.getId(), debtRepaymentDto.getResidue());
+        if (debt.getResidue() == null) {
+            debtRepaymentDto.setResidue(debt.getAmount() - debtRepaymentDto.getRepayment());
+        } else{
+            debtRepaymentDto.setResidue(debt.getResidue() - debtRepaymentDto.getRepayment());
+        }
+            debtService.updateResidue(debt.getId(), debtRepaymentDto.getResidue());
         debtRepaymentRepository.save(DebtRepaymentMapper.toDebtRepayment(debtRepaymentDto, debt));
     }
 }

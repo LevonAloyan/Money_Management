@@ -63,6 +63,6 @@ public class DebtServiceImpl implements DebtService {
     public void updateResidue(Long debtId, Long residue) {
         Debt debt = DebtMapper.toDebt(findById(debtId));
         debt.setResidue(residue);
-        save(DebtMapper.toDto(debt), debt.getAdmin().getId());
+       debtRepository.save(debt);
     }
 }

@@ -56,8 +56,8 @@ public class DebtController {
             model.addAttribute("allDebtsOdConcreteCreditor", allDebtsOdConcreteCreditor);
             return "creditorCreation";
         }
-       debtRepaymentService.save(debtRepaymentDto);
+        debtRepaymentService.save(debtRepaymentDto);
 
-        return REDIRECT_TO_HTML + adminId + "/creditor";
+        return REDIRECT_TO_HTML + adminId + "/debt/" + creditorId;
     }
 }

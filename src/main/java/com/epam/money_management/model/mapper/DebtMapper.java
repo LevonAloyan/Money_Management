@@ -32,6 +32,7 @@ public class DebtMapper {
         debtDto.setCurrency(debt.getCurrency());
         debtDto.setTypeOfDebt(debt.getTypeOfDebt());
         debtDto.setReturnDate(debt.getReturnDate());
+
         debtDto.setBorrowingDate(debt.getBorrowingDate());
         return debtDto;
     }
