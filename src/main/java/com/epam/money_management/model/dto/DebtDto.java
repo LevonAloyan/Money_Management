@@ -14,20 +14,20 @@ import static com.epam.money_management.constants.GlobalConstants.*;
 
 public class DebtDto {
     private Long id;
-    @NotNull(message = EMPTY_FIELD_MSG)
+    @NotNull(message = "{required.fields}")
     private Type typeOfDebt;
     @Min(value = 1, message = "The debt value must be grater than 0")
-    @NotNull(message = EMPTY_FIELD_MSG)
+    @NotNull(message = "{required.fields}")
     private Long amount;
-    @NotNull(message = EMPTY_FIELD_MSG)
+    @NotNull(message = "{required.fields}")
     private Currency currency;
-    @NotNull(message = EMPTY_FIELD_MSG)
+    @NotNull(message = "{required.fields}")
     @DateTimeFormat(pattern = DATE_FORMATTER)
     private LocalDate borrowingDate;
-    @NotNull(message = EMPTY_FIELD_MSG)
+    @NotNull(message = "{required.fields}")
     @DateTimeFormat(pattern = DATE_FORMATTER)
     private LocalDate returnDate;
-    @NotNull(message = EMPTY_FIELD_MSG)
+    @NotNull(message = "{required.fields}")
     private Creditor creditor;
     private String note;
     private Admin admin;
