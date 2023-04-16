@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Pattern;
 
 import java.util.Comparator;
 
-import static com.epam.money_management.constants.GlobalConstants.*;
+import static com.epam.money_management.constants.ControllerHelper.PHONE_REGEXP;
 
 public class CreditorDto {
     private Long id;

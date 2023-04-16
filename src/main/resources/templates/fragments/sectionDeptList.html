@@ -16,8 +16,9 @@
                     <div class="u-container-layout u-valign-top u-container-layout-2">
                       <h2 class="u-align-left u-text u-text-default u-text-3"th:text="#{lent}"></h2>
                       <div th:each="lender:${lenders}">
-                        <p class="u-align-left u-text u-text-default u-text-4"
-                           th:text="${lender.getName() +' '+ lender.getSurname()}">N S</p>
+                        <a class="u-align-left u-text u-text-default u-text-4"
+                           th:text="${lender.getName() +' '+ lender.getSurname()}"
+                           th:href="@{'/'+${adminId}+'/debt/'+${lender.getId()}}">N S</a>
                       </div>
                     </div>
                   </div>
@@ -30,8 +31,9 @@
                     <div class="u-container-layout u-valign-top u-container-layout-4">
                       <h2 class="u-align-left u-text u-text-default u-text-3" th:text="#{borrowed}"></h2>
                       <div th:each="borrower:${borrowers}">
-                        <p class="u-align-left u-text u-text-default u-text-2"
-                           th:text="${borrower.getName() + ' ' + borrower.getSurname()}">N S</p>
+                        <a class="u-align-left u-text u-text-default u-text-2"
+                           th:text="${borrower.getName() + ' ' + borrower.getSurname()}"
+                           th:href="@{'/'+${adminId}+'/debt/'+${borrower.getId()}}">N S</a>
                       </div>
                     </div>
                   </div>

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.epam.money_management.constants.ControllerHelper.CONCRETE_CREDITOR_DEBTS_HTML;
+
 @Controller
 @RequestMapping("/{adminId}/")
 public class DebtController {
@@ -29,10 +31,10 @@ public class DebtController {
                                           @PathVariable("creditorId") Long creditorId, Model model) {
 
         List<DebtDto> allDebtsOdConcreteCreditor = new ArrayList<>();
-        model.addAttribute("creditor", creditorService.findById(creditorId).getFullName());
         allDebtsOdConcreteCreditor.addAll(debtService.findByCreditorIdAdminIdAndTypeOfDebt(creditorId, adminId, Type.LENT));
         allDebtsOdConcreteCreditor.addAll(debtService.findByCreditorIdAdminIdAndTypeOfDebt(creditorId, adminId, Type.BORROWED));
+        model.addAttribute("creditor", creditorService.findById(creditorId).getFullName());
         model.addAttribute("allDebtsOdConcreteCreditor", allDebtsOdConcreteCreditor);
-        return "concreteDebts";
+        return CONCRETE_CREDITOR_DEBTS_HTML;
     }
 }
