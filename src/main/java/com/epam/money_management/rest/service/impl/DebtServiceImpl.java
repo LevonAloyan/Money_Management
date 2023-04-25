@@ -1,7 +1,9 @@
 package com.epam.money_management.rest.service.impl;
 
 import com.epam.money_management.constants.Type;
+import com.epam.money_management.exceptions.ObjectIsNullException;
 import com.epam.money_management.model.dto.DebtDto;
+import com.epam.money_management.model.entity.Debt;
 import com.epam.money_management.model.mapper.AdminMapper;
 import com.epam.money_management.model.mapper.DebtMapper;
 import com.epam.money_management.rest.controller.AdminController;
@@ -52,4 +54,15 @@ public class DebtServiceImpl implements DebtService {
         return DebtMapper.toDebtDtoList(debtRepository.findByCreditorIdAndAdminIdAndTypeOfDebt(creditorId, adminId, type));
     }
 
+    @Override
+    public DebtDto findById(Long id) {
+        return DebtMapper.toDto(debtRepository.findById(id).orElseThrow(ObjectIsNullException::new));
+    }
+
+    @Override
+    public void updateResidue(Long debtId, Long residue) {
+        Debt debt = DebtMapper.toDebt(findById(debtId));
+        debt.setResidue(residue);
+       debtRepository.save(debt);
+    }
 }

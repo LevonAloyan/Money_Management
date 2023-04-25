@@ -19,6 +19,7 @@ public class Debt {
     private LocalDate borrowingDate;
     private LocalDate returnDate;
     private String note;
+    private Long residue;
     @ManyToOne
     private Admin admin;
     @ManyToOne
@@ -94,6 +95,14 @@ public class Debt {
 
     public void setCreditor(Creditor creditor) {
         this.creditor = creditor;
+    }
+
+    public Long getResidue() {
+        return residue;
+    }
+
+    public void setResidue(Long residue) {
+        this.residue = residue;
     }
 
     @Override
